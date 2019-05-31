@@ -12,7 +12,7 @@ function getRepositories() {
 
 function displayCommits() {
   const commits = JSON.parse(this.responseText);
-  const commitsList = `<ul>${commits
+  const commitsDisplay = `<ul>${commits
     .map(
       commit =>
         '<li><h3>' +
@@ -24,6 +24,13 @@ function displayCommits() {
         '</li>'
     )
     .join('')}</ul>`;
-  document.getElementById('details').innerHTML = commitsList;
+  document.getElementById('details').innerHTML = commitsDisplay;
 }
 
+function displayBranches() {
+  const branches = JSON.parse(this.responseText);
+  const branchesDisplay = `<ul>${branches
+    .map(branch => '<li>' + branch.name + '</li>')
+    .join('')}</ul>`;
+  document.getElementById('details').innerHTML = branchesDisplay;
+}
