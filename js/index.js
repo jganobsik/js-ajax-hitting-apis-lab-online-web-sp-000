@@ -34,3 +34,13 @@ function displayBranches() {
     .join('')}</ul>`;
   document.getElementById('details').innerHTML = branchesDisplay;
 }
+
+function getBranches(el) {
+  const repoName = el.dataset.repository;
+  const uri =
+    rootURL + '/repos/' + el.dataset.username + '/' + repoName + '/branches';
+  const xhr = new XMLHttpRequest();
+  xhr.addEventListener('load', displayBranches);
+  xhr.open('GET', uri);
+  xhr.send();
+}
